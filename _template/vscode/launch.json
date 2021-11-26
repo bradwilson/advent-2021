@@ -1,0 +1,11 @@
+{
+  "name": "##PROJECT##",
+  "type": "coreclr",
+  "request": "launch",
+  "preLaunchTask": "build-##PROJECT##",
+  "program": "${workspaceFolder}/##PROJECT##/bin/Debug/net6.0/##PROJECT##.dll",
+  "args": [],
+  "cwd": "${workspaceFolder}/##PROJECT##/bin/Debug/net6.0",
+  "console": "internalConsole",
+  "stopAtEntry": false
+}

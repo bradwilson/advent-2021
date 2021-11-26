@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+set -e
+
+project=$1
+
+if [ -z "${project}" ]; then
+	echo "usage(1): new-day <foldername>"
+	exit 1
+fi
+
+if [ -d "${project}" ]; then
+	echo "error(2): project ${project} already exists"
+	exit 2
+fi
+
+mkdir -p ${project}
+cp -R _template/project/* ${project}/
+mv ${project}/template.csproj ${project}/${project}.csproj
+dotnet sln add ${project}
+
+cat .vscode/launch.json | jq "(.configurations[.configurations | length] |= . + $(sed s/##PROJECT##/${project}/g < _template/vscode/launch.json))" > .vscode/launch.json.new
+rm .vscode/launch.json
+mv .vscode/launch.json.new .vscode/launch.json
+
+cat .vscode/tasks.json | jq "(.tasks[.tasks | length] |= . + $(sed s/##PROJECT##/${project}/g < _template/vscode/tasks.json))" > .vscode/tasks.json.new
+rm .vscode/tasks.json
+mv .vscode/tasks.json.new .vscode/tasks.json
