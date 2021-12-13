@@ -132,6 +132,17 @@
       "cwd": "${workspaceFolder}/day12/bin/Debug/net6.0",
       "console": "internalConsole",
       "stopAtEntry": false
+    },
+    {
+      "name": "day13",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-day13",
+      "program": "${workspaceFolder}/day13/bin/Debug/net6.0/day13.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/day13/bin/Debug/net6.0",
+      "console": "internalConsole",
+      "stopAtEntry": false
     }
   ]
 }
